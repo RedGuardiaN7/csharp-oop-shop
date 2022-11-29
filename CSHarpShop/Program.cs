@@ -5,12 +5,16 @@
 
 using CSHarpShop;
 
-Random GeneratorRandomNumber = new Random();
-
-int RandomNumber = GeneratorRandomNumber.Next(0, 99999999);
-
 Product product_1 = new Product();
 
-product_1.name = "Prova!";
+product_1.name = "Prodotto_1";
 
 Console.WriteLine(product_1.name);
+
+Console.WriteLine(product_1.code);
+
+Console.WriteLine(product_1.ExtendedName());
+
+product_1.price = 12;
+
+Console.WriteLine(product_1.FullPrice());

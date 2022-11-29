@@ -4,17 +4,16 @@
 // - Gli altri attributi siano accessibili sia in lettura che in scrittura
 
 using CSHarpShop;
+//Viene usato l'encoding per vedere correttamente il prezzo in console (€)
+Console.OutputEncoding = System.Text.Encoding.UTF8;
 
 Product product_1 = new Product();
 
-product_1.name = "Prodotto_1";
+product_1.name = "Pallone";
+product_1.description = "Costruzione con cuciture ad ottima aderenza e minore assorbimento dell'acqua";
+product_1.price = 20.54;
+product_1.Print(1);
 
-Console.WriteLine(product_1.name);
-
-Console.WriteLine(product_1.code);
-
-Console.WriteLine(product_1.ExtendedName());
-
-product_1.price = 12;
-
-Console.WriteLine(product_1.FullPrice());
+Product product_2 = new Product("Mini_Proiettore", 79.99);
+product_2.description = "Un cinema privato da portare con sé";
+product_2.NoIvaPrint(2);

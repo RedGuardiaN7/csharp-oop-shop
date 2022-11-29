@@ -14,15 +14,15 @@ namespace Bonus
     {
 
         //Viene utilizzato "public" ma assieme ai setter e getter auto-implementati, che rendono le caratteristiche private, ma peremttono di usare i getter e i setter.
-        public string code { get; }                    //Il codice prodotto è accessibile solo in lettura
+        public string Code { get; }                    //Il codice prodotto è accessibile solo in lettura
 
-        public string name { get; set; }
+        public string Name { get; set; }
 
-        public string description { get; set; }
+        public string Description { get; set; }
 
-        public double price { get; set; }
+        public double Price { get; set; }
 
-        public double iva { get; set; }
+        public double Iva { get; set; }
 
         //Il codice del prodotto viene generato casualmente
 
@@ -37,7 +37,7 @@ namespace Bonus
 
             string PaddedCode = RandomNumber.ToString("D8");          //BONUS: metodo che restituisca il codice con un pad left di 0 per arrivare a 8 caratteri
 
-            code = PaddedCode;
+            Code = PaddedCode;
         }
         //Costruttore con nome e prezzo
 
@@ -46,18 +46,31 @@ namespace Bonus
             Random GeneratorRandomNumber = new Random();
             int RandomNumber = GeneratorRandomNumber.Next(0, 999999);
             string PaddedCode = RandomNumber.ToString("D8");
-            code = PaddedCode;
+            Code = PaddedCode;
 
-            this.name = name;
-            this.price = price;
+            this.Name = name;
+            this.Price = price;
+
+        }
+        
+        //Costruttore con nome 
+
+        public Product(string name)
+        {
+            Random GeneratorRandomNumber = new Random();
+            int RandomNumber = GeneratorRandomNumber.Next(0, 999999);
+            string PaddedCode = RandomNumber.ToString("D8");
+            Code = PaddedCode;
+
+            this.Name = name;
         }
         //---------- Definizioni dei metodi ---------- //
 
         //Metodo che calcola l'iva del prodotto e ritorna il prezzo pieno
         public double FullPrice()
         {
-            iva = Math.Round(0.22 * price);
-            double FullPrice = price + iva;
+            Iva = Math.Round(0.22 * Price);
+            double FullPrice = Price + Iva;
             FullPrice = Math.Round(FullPrice, 2);
             return FullPrice;
         }
@@ -66,29 +79,29 @@ namespace Bonus
 
         public string ExtendedName()
         {
-            string output = code + name;
+            string output = Code + Name;
             return output;
         }
 
         //Metodo che stampa a video tutte le informazioni del prodotto (con l'IVA)
         public void Print(int num)
         {
-            Console.WriteLine("-------------- Prodotto " + num + " --------------");
+            Console.WriteLine("-------------------- Prodotto " + num + " ---------------------");
             Console.WriteLine();
-            Console.WriteLine("Nome: " + name);
+            Console.WriteLine("Nome: " + Name);
             Console.WriteLine();
-            Console.WriteLine("Codice: " + code);
+            Console.WriteLine("Codice: " + Code);
             Console.WriteLine();
-            Console.WriteLine("Descrizione: " + description);
+            Console.WriteLine("Descrizione: " + Description);
             Console.WriteLine();
             Console.WriteLine("Il nome esteso del prodotto è: " + this.ExtendedName());
             Console.WriteLine();
 
             double FullPrice = this.FullPrice();
 
-            Console.WriteLine("Il prezzo del prodotto è di: " + FullPrice + "€ (senza IVA: " + this.price + "€)");
+            Console.WriteLine("Il prezzo del prodotto è di: " + FullPrice + "€ (senza IVA: " + this.Price + "€)");
             Console.WriteLine();
-            Console.WriteLine("------------------------------------------------");
+            Console.WriteLine("-----------------------------------------------------");
             Console.WriteLine();
 
         }
@@ -96,19 +109,19 @@ namespace Bonus
         //Metodo che stampa a video tutte le informazioni del prodotto (senza l'IVA)
         public void NoIvaPrint(int num)
         {
-            Console.WriteLine("-------------- Prodotto " + num + " --------------");
+            Console.WriteLine("--------------------- Prodotto " + num + " --------------------");
             Console.WriteLine();
-            Console.WriteLine("Nome: " + name);
+            Console.WriteLine("Nome: " + Name);
             Console.WriteLine();
-            Console.WriteLine("Codice: " + code);
+            Console.WriteLine("Codice: " + Code);
             Console.WriteLine();
-            Console.WriteLine("Descrizione: " + description);
+            Console.WriteLine("Descrizione: " + Description);
             Console.WriteLine();
             Console.WriteLine("Il nome esteso del prodotto è: " + this.ExtendedName());
             Console.WriteLine();
-            Console.WriteLine("Il prezzo del prodotto è di: " + this.price + "€ (senza IVA)");
+            Console.WriteLine("Il prezzo del prodotto è di: " + this.Price + "€ (senza IVA)");
             Console.WriteLine();
-            Console.WriteLine("------------------------------------------------");
+            Console.WriteLine("----------------------------------------------------");
             Console.WriteLine();
 
         }
